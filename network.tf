@@ -36,6 +36,12 @@ resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_tcp_k8s" {
     port_max = 32767
   }
 }
+resource "ibm_tg_connection" "test_ibm_tg_connection"{
+  gateway = ibm_tg_gateway.test_tg_gateway.id
+  network_type = "vpc"
+  name= "front-office-tg"
+  network_id = ibm_is_vpc.test_tg_vpc.resource_crn
+}
 
 resource "ibm_is_public_gateway" "iac_iks_gateway" {
     name  = "${var.project_name}-${var.environment}-gateway-${format("%02s", count.index)}"
