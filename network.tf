@@ -37,10 +37,10 @@ resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_tcp_k8s" {
   }
 }
 resource "ibm_is_tg_connection" "iac_iks_tg_connection" {
-  gateway = ibm_is_tg_gateway.ibm_is_vpc.iac_iks_vpc.id
+  gateway = ibm_is_tg_gateway.iac_iks_tg_gateway.id
   network_type = "vpc"
   name= "front-office"
-  network_id = ibm_is_vpc.iac_iks_vpc.id.resource_crn
+  network_id = ibm_is_vpc.iac_iks_tg_vpc.resource_crn
 }
 
 resource "ibm_is_public_gateway" "iac_iks_gateway" {
