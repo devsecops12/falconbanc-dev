@@ -41,7 +41,7 @@ resource "ibm_tg_connection" "front_office_tg_connection"{
   network_type = "vpc"
   name= "front-office-tg"
   resource_group           = data.ibm_resource_group.group.id
-  network_id = ibm_is_vpc.front_office_tg_vpc.resource_crn
+  network_id = ibm_is_vpc.iac_iks_vpc.id.resource_crn
 }
 
 resource "ibm_is_public_gateway" "iac_iks_gateway" {
