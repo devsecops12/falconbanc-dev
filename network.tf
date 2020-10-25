@@ -40,6 +40,7 @@ resource "ibm_tg_connection" "front_office_tg_connection"{
   gateway = ibm_tg_gateway.front_office_tg_gateway.id
   network_type = "vpc"
   name= "front-office-tg"
+  resource_group           = data.ibm_resource_group.group.id
   network_id = ibm_is_vpc.front_office_tg_vpc.resource_crn
 }
 
