@@ -40,7 +40,7 @@ resource "ibm_tg_connection" "test_ibm_tg_connection" {
   gateway = ibm_tg_gateway.test_tg_gateway.id
   network_type = "vpc"
   name= "front-office"
-  network_id = ibm_vpc.iac_iks_tg_vpc.resource_crn
+  network_id = ibm_is_vpc.test_tg_vpc.resource_crn
 }
 
 resource "ibm_is_public_gateway" "iac_iks_gateway" {
