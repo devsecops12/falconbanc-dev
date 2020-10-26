@@ -25,6 +25,12 @@ resource "ibm_is_subnet" "iac_iks_subnet" {
   depends_on  = [ibm_is_vpc_address_prefix.vpc_address_prefix]
 }
 
+resource "ibm_is_vpc" "iac_iks_vpc" {
+  name = "${var.project_name}-${var.environment}-vpc"
+  resource_group = data.ibm_resource_group.group.id
+  address_prefix_management = "manual"
+}
+
 resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_tcp_k8s" {
   count     = local.max_size
   group     = ibm_is_vpc.iac_iks_vpc.default_security_group
