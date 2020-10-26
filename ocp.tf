@@ -9,7 +9,7 @@ resource "ibm_resource_instance" "cos_instance" {
 
 resource "ibm_container_vpc_cluster" "iac_iks_cluster" {
   name              = "${var.project_name}-${var.environment}-cluster"
-  vpc_id            = ibm_is_vpc.iac_iks_vpc-1.id
+  vpc_id            = ibm_is_vpc.iac_iks_vpc_1.id
   flavor            = var.flavors[0]
   worker_count      = var.workers_count[0]
   kube_version      = var.k8s_version
