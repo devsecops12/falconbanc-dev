@@ -29,7 +29,7 @@ resource "ibm_container_vpc_worker_pool" "iac_iks_cluster_pool" {
   cluster           = ibm_container_vpc_cluster.iac_iks_cluster.id
   worker_pool_name  = "${var.project_name}-${var.environment}-wp-${format("%02s", count.index + 1)}"
   flavor            = var.flavors[count.index + 1]
-  vpc_id            = ibm_is_vpc.iac_iks_vpc-1.id
+  vpc_id            = ibm_is_vpc.iac_iks_vpc_1.id
   worker_count      = var.workers_count[count.index + 1]
   resource_group_id = data.ibm_resource_group.group.id
   zones {
