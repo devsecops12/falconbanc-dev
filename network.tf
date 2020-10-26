@@ -1,4 +1,4 @@
-resource "ibm_is_vpc" "iac_iks_vpc" {
+resource "ibm_is_vpc" "iac_iks_vpc-1" {
   name = "${var.project_name}-${var.environment}-vpc"
   resource_group = data.ibm_resource_group.group.id
   address_prefix_management = "manual"
@@ -25,7 +25,7 @@ resource "ibm_is_subnet" "iac_iks_subnet" {
   depends_on  = [ibm_is_vpc_address_prefix.vpc_address_prefix]
 }
 
-resource "ibm_is_vpc" "iac_iks_vpc" {
+resource "ibm_is_vpc" "iac_iks_vpc-2" {
   name = "${var.project_name}-${var.environment}-vpc"
   resource_group = data.ibm_resource_group.group.id
   address_prefix_management = "manual"
