@@ -36,12 +36,13 @@ resource "ibm_is_security_group_rule" "iac_iks_security_group_rule_tcp_k8s" {
     port_max = 32767
   }
 }
-resource "ibm_tg_connection" "front_ibm_tg_connection" {
-  gateway = ibm_tg_gateway.front_tg_gateway.id
-  network_type = "vpc"
-  name= "front-office"
-  network_id = ibm_is_vpc.front_tg_vpc.resource_crn
+resource "ibm_tg_gateway" "new_tg_gw"{
+  name="transit-gateway-1"
+  location="eu-du"
+  global=true
+  resource_group="6664a071c0b546deb4703269b54a5d9a"
 }
+
 
 resource "ibm_is_public_gateway" "iac_iks_gateway" {
     name  = "${var.project_name}-${var.environment}-gateway-${format("%02s", count.index)}"
